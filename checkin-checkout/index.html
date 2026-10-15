@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHECK-IN | Visitor Log</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">CHECK<span>&middot;</span>IN</div>
+  <div class="live-time">
+    <div class="date" id="liveDate"></div>
+    <div id="liveTime"></div>
+  </div>
+</header>
+
+<main>
+  <!-- Registration form -->
+  <section class="form-panel">
+    <h2>Register Visitor</h2>
+    <div class="subtitle">Entry / Departure Log</div>
+
+    <form id="checkinForm" novalidate>
+      <div class="form-group">
+        <label for="visitorName">Full Name *</label>
+        <input type="text" id="visitorName" placeholder="Jane Smith" autocomplete="off" required>
+      </div>
+
+      <div class="form-group">
+        <label for="visitorOrg">Organisation</label>
+        <input type="text" id="visitorOrg" placeholder="Company / Institution" autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="visitorHost">Host / Meeting With</label>
+        <input type="text" id="visitorHost" placeholder="Internal contact" autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="visitorPurpose">Purpose</label>
+        <select id="visitorPurpose">
+          <option value="Meeting">Meeting</option>
+          <option value="Interview">Interview</option>
+          <option value="Delivery">Delivery</option>
+          <option value="Maintenance">Maintenance</option>
+          <option value="Event">Event</option>
+          <option value="Contractor">Contractor</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="visitorNotes">Notes</label>
+        <textarea id="visitorNotes" placeholder="Optional remarks..."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-checkin">Check In</button>
+    </form>
+
+    <div class="active-section">
+      <div class="active-label">
+        <span class="live-dot"></span>
+        On Site: tap to check out
+      </div>
+      <div class="active-chips" id="activeChips"></div>
+    </div>
+  </section>
+
+  <!-- Visitor log -->
+  <section class="log-panel">
+    <div class="stats-bar">
+      <div class="stat-card">
+        <div class="stat-label">On Premises</div>
+        <div class="stat-value green" id="statIn">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Today</div>
+        <div class="stat-value" id="statTotal">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Checked Out</div>
+        <div class="stat-value accent" id="statOut">0</div>
+      </div>
+    </div>
+
+    <div class="log-header">
+      <h2>Visitor Log</h2>
+      <div class="counter"><strong id="visibleCount">0</strong> records</div>
+    </div>
+
+    <div class="filter-bar">
+      <button type="button" class="filter-btn active" data-filter="all">All</button>
+      <button type="button" class="filter-btn" data-filter="in">On Site</button>
+      <button type="button" class="filter-btn" data-filter="out">Departed</button>
+      <input class="search-box" id="searchBox" type="text" placeholder="Search name..." aria-label="Search visitors by name">
+    </div>
+
+    <div class="table-wrap">
+      <table class="log-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Visitor</th>
+            <th>Purpose</th>
+            <th>Check In</th>
+            <th>Check Out</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="logBody"></tbody>
+      </table>
+    </div>
+
+    <div id="emptyState" class="empty-state" hidden>
+      <div class="icon">&#9723;</div>
+      <p>No visitors logged yet.<br>Use the form to register a visitor.</p>
+    </div>
+  </section>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
