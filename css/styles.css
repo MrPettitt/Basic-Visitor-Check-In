@@ -62,11 +62,11 @@ body::before {
 .live-time .date { font-weight: 500; color: var(--ink); }
 
 main {
-  max-width: 1100px;
+  max-width: 1240px;
   margin: 0 auto;
   padding: 2.5rem;
   display: grid;
-  grid-template-columns: 380px 1fr;
+  grid-template-columns: 380px minmax(0, 1fr);
   gap: 2.5rem;
   align-items: start;
 }
@@ -370,13 +370,13 @@ textarea { resize: vertical; min-height: 70px; }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0.6rem;
   text-align: left;
   font-weight: 400;
 }
 
 .log-table td {
-  padding: 0.85rem 0.75rem;
+  padding: 0.85rem 0.6rem;
   vertical-align: middle;
   border-bottom: 1px solid var(--border);
 }
@@ -526,7 +526,8 @@ textarea { resize: vertical; min-height: 70px; }
 
 @media (max-width: 860px) {
   .site-header { padding: 1rem 1.25rem; }
-  main { grid-template-columns: 1fr; padding: 1.25rem; gap: 1.5rem; }
+  main { grid-template-columns: minmax(0, 1fr); padding: 1.25rem; gap: 1.5rem; }
+  .stat-card { padding: 0.8rem; }
   .form-panel { position: static; }
   .search-box { margin-left: 0; width: 100%; }
 }
