@@ -211,3 +211,7 @@ localStorage.removeItem('checkin-visitors');
 - Edit or delete a record
 - A shared backend so several devices see the same log
 - Automatic prompt to check out visitors still on site at the end of the day
+
+## License
+
+Released under the [MIT License](LICENSE).
